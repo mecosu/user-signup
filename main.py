@@ -7,12 +7,12 @@ app.config['DEBUG'] = True
 
 def verify_password():
     password = request.form['password']
-    password_verifier = request.form['verify-password']
-    number_of_characters = password.count(password)
-    if number_of_characters > 3 and number_of_characters < 20:
-        if " " not in password:
-            if password == verify_password:
-                return True
+    verify_password = request.form['verify-password']
+    number_of_characters = len(password)
+    if password == verify_password:
+        if number_of_characters > 3 and number_of_characters < 20:
+            if " " not in password:
+                return True       
     return False
 
 
