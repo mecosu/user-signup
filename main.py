@@ -15,12 +15,18 @@ def verify_password():
                 return True       
     return False
 
-
 def verify_username():
-    pass
+    username = request.form['username']
+    number_of_characters = len(username)
+    if number_of_characters > 3 and number_of_characters < 20:
+        return True
+    return False
 
 def verify_email():
-    pass
+    email = request.form['email']
+    if '@' in email:
+        return True
+    return False
 
 @app.route("/signup-confirmation", methods=['POST'])
 def user_signup_confirmation():
@@ -29,13 +35,13 @@ def user_signup_confirmation():
     #password = request.form['password']
     #verify_password = request.form['verify-password']
     #email = request.form['email']
-    error = "Password is not valid"
+    error = "ERROR"
     if verify_password():
+        if verify_email():
+            if verify_username():
+                return render_template('signup-confirmation.html', username = request.form['username'], password = request.form['password'], verify_password = request.form['verify-password'], email = request.form['email'] )
+    return error
 
-        return render_template('signup-confirmation.html', username = request.form['username'], password = request.form['password'], verify_password = request.form['verify-password'], email = request.form['email'] )
-
-    else:
-        return error
 @app.route("/")
 def index():
     encoded_error = request.args.get("error")
