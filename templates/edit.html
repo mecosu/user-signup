@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/signup-confirmation" method="post">
+    <label>
+        <p>
+            Username
+            <input type="text" name="username"/>
+        </p>
+        <p>
+        Password
+        <input type="text" name="password"/>
+        </p>
+        <p>
+        Verify Password
+        <input type="text" name="verify-password"/>
+        </p>
+        <p>
+        Email (optional)
+        <input type="text" name="email"/>
+        </p>
+    </label>
+    <input type="submit" value="Submit"/>
+</form>
+
+
+
+{% if error %}
+  <p class='error'>{{ error }}</p>
+{% endif %}
+{% endblock %}
