@@ -9,7 +9,7 @@
         <p>
         <span>
         Username
-        <input type="text" name="username"/>
+        <input type="text" name="username" value=" {{ request.form['username'] }} "/>
         </span>
         <span class="error">{{ username_error }}</span>
         </p>
@@ -30,7 +30,7 @@
         <p>
         <span>
         Email (optional)
-        <input type="text" name="email"/>
+        <input type="text" name="email" value=" {{ request.form['email'] }}"/>
         </span>
         <span class="error"> {{ email_error }} </span>
         </p>
