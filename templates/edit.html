@@ -2,23 +2,37 @@
 
 {% block content %}
 
+<h1>Signup</h1>
+
 <form action="/signup-confirmation" method="post">
     <label>
         <p>
-            Username
-            <input type="text" name="username"/>
+        <span>
+        Username
+        <input type="text" name="username"/>
+        </span>
+        <span class="error">{{ username_error }}</span>
         </p>
         <p>
+        <span>
         Password
-        <input type="text" name="password"/>
+        <input type="password" name="password"/>
+        </span>
+        <span class="error"> {{ password_valid_error }} </span>
         </p>
         <p>
+        <span>
         Verify Password
-        <input type="text" name="verify-password"/>
+        <input type="password" name="verify-password"/>
+        </span>
+        <span class="error"> {{ password_match_error }} </span>
         </p>
         <p>
+        <span>
         Email (optional)
         <input type="text" name="email"/>
+        </span>
+        <span class="error"> {{ email_error }} </span>
         </p>
     </label>
     <input type="submit" value="Submit"/>
